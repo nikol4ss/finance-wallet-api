@@ -1,17 +1,18 @@
-import Fastify from "fastify";
+import Fastify from 'fastify'
 
-const server = Fastify();
+const server = Fastify()
 
-server.get("/ping", async (req, res) => {
-  return "pong\n";
-});
+server.get('/ping', (_req, _res) => {
+  return 'pong\n'
+})
 
 const start = async () => {
   try {
-    await server.listen({ port: 3000 });
+    await server.listen({ port: 3000 })
   } catch (err) {
-    server.log.error(err);
-    process.exit(1);
+    server.log.error(err)
+    process.exit(1)
   }
-};
-start();
+}
+
+void start()
