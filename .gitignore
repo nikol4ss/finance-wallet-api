@@ -1,0 +1,52 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Lockfiles
+package-lock.json
+yarn.lock
+
+# Build / TypeScript
+dist/
+build/
+.out/
+coverage/
+*.tsbuildinfo
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.tmp/
+temp/
+
+# Docker
+docker-compose.override.yml
+
+# Misc
+*.local
+*.seed
