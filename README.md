@@ -19,7 +19,6 @@ Diferencial técnico
 Modelagem correta de recorrência (não duplicar registros)
 Query otimizada para resumo (GROUP BY + indexes)
 Idempotência em criação de transações
-∫
 
 wallet-api/
   src/
