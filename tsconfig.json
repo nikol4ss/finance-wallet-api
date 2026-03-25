@@ -11,13 +11,10 @@
 
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-
+    
     "skipLibCheck": true,
-
     "forceConsistentCasingInFileNames": true,
-
     "types": ["node"],
-
     "sourceMap": true
   }
 }
