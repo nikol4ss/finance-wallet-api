@@ -4,17 +4,18 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
 
-    "rootDir": "./src",
+    "rootDir": ".",
     "outDir": "./dist",
 
     "strict": true,
 
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    
+
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "types": ["node"],
     "sourceMap": true
-  }
+  },
+  "include": ["src", "drizzle.config.ts"]
 }
