@@ -1,10 +1,14 @@
 import Fastify from "fastify";
 
-const app = Fastify({ logger: true });
+import { authRoutes } from "./modules/auth/auth.routes.js";
+import { httpPlugin } from "./shared/http.js";
 
-app.get("/", async () => {
-  return { status: "ok" };
+const app = Fastify({
+  logger: false,
 });
+
+app.register(httpPlugin);
+app.register(authRoutes, { prefix: "/auth" });
 
 const start = async () => {
   try {

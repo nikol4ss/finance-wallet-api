@@ -18,7 +18,9 @@ services:
       retries: 10
 
   api:
-    build: .
+    build:
+      context: .
+      target: dev
     container_name: finance-wallet-api
     depends_on:
       postgres:
@@ -29,6 +31,9 @@ services:
       DATABASE_URL: ${DATABASE_URL}
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
 
 volumes:
   pgdata:
