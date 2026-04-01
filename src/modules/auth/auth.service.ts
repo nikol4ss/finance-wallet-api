@@ -34,7 +34,6 @@ export const AuthService = (_app: FastifyInstance) => ({
 
   signIn: async (data: SignInInput) => {
     const { email, password } = data;
-
     const user = await db.select().from(users).where(eq(users.email, email)).limit(1);
 
     if (!user.length) {
