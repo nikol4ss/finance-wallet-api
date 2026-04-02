@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { transactionTypeEnum } from '../../db/schema';
 
-export const categoriesSchemas = z.object({
+export const CategoriesSchemas = z.object({
   name: z
     .string()
     .trim()
@@ -10,4 +10,7 @@ export const categoriesSchemas = z.object({
   type: z.enum(transactionTypeEnum.enumValues),
 });
 
-export type categoriesInput = z.infer<typeof categoriesSchemas>;
+export const CategoriesUpdateSchema = CategoriesSchemas.partial();
+
+export type CategoriesInput = z.infer<typeof CategoriesSchemas>;
+export type CategoriesUpdateInput = z.infer<typeof CategoriesUpdateSchema>;
