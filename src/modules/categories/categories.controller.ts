@@ -1,11 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { CategoriesSchemas, CategoriesUpdateSchema } from './categories.schemas';
+import { CategoriesCreateSchemas, CategoriesUpdateSchema } from './categories.schemas';
 import { CategoriesService } from './categories.service';
-import { z } from 'zod';
-
-const paramsSchema = z.object({
-  id: z.string().uuid('ID inválido'),
-});
 
 export const CategoriesController = (service: ReturnType<typeof CategoriesService>) => ({
   async findAll(req: FastifyRequest, reply: FastifyReply) {
@@ -14,7 +9,7 @@ export const CategoriesController = (service: ReturnType<typeof CategoriesServic
   },
 
   async findById(req: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) {
-    const { id } = paramsSchema.parse(req.params);
+    const { id } = CategoriesCreateSchemas.parse(req.params);
     const category = await service.findById(req.user.id, id);
 
     if (!category) {
@@ -25,13 +20,13 @@ export const CategoriesController = (service: ReturnType<typeof CategoriesServic
   },
 
   async create(req: FastifyRequest, reply: FastifyReply) {
-    const data = CategoriesSchemas.parse(req.body);
+    const data = CategoriesCreateSchemas.parse(req.body);
     const category = await service.create(req.user.id, data);
     return reply.status(201).send(category);
   },
 
   async update(req: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) {
-    const { id } = paramsSchema.parse(req.params);
+    const { id } = CategoriesCreateSchemas.parse(req.params);
     const data = CategoriesUpdateSchema.parse(req.body);
     const updated = await service.update(req.user.id, id, data);
 
@@ -43,7 +38,7 @@ export const CategoriesController = (service: ReturnType<typeof CategoriesServic
   },
 
   async delete(req: FastifyRequest<{ Params: { id: string } }>, reply: FastifyReply) {
-    const { id } = paramsSchema.parse(req.params);
+    const { id } = CategoriesCreateSchemas.parse(req.params);
     const deleted = await service.delete(req.user.id, id);
 
     if (!deleted) {

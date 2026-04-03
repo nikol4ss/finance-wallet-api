@@ -1,13 +1,13 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { ZodError } from 'zod';
-import { SignInSchema, SignUpSchema } from './auth.schema.js';
+import { SignInSchema, SignUpCreateSchema } from './auth.schema.js';
 import { AuthService } from './auth.service.js';
 
 export const authController = {
   signUp: async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const service = AuthService(request.server);
-      const user = SignUpSchema.parse(request.body);
+      const user = SignUpCreateSchema.parse(request.body);
 
       const createdUser = await service.signUp(user);
       return reply.status(201).send(createdUser);
